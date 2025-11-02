@@ -7,7 +7,7 @@ import { FaPencil, FaTrash } from "react-icons/fa6";
 import { useWorks } from "../context/WorksContext";
 
 const AdminForm = () => {
-  const { works, setWorks } = useWorks(); // 👈 direct access to works + setter
+  const { works, setWorks } = useWorks(); // ✅ setWorks is now always defined
 
   const [form, setForm] = useState<Omit<Work, "_id">>({
     title: "",
@@ -22,11 +22,10 @@ const AdminForm = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [status, setStatus] = useState("");
 
-  // Handle form input changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const target = e.target as HTMLInputElement; // 🔹 assert as input
+    const target = e.target as HTMLInputElement; // assert type
 
     const { name, value, type, checked } = target;
 
@@ -36,20 +35,17 @@ const AdminForm = () => {
     }));
   };
 
-
   const handleLogout = () => {
     localStorage.removeItem("admin");
     localStorage.removeItem("adminLoginTime");
     window.location.reload();
   };
 
-  // ➕ Add or ✏️ Update Work
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
       if (editingId) {
-        // Update existing work
         const res = await axios.put(`/api/works/${editingId}`, form);
         const updatedWork = res.data;
 
@@ -59,7 +55,6 @@ const AdminForm = () => {
 
         setStatus("Book updated successfully!");
       } else {
-        // Add new work
         const res = await axios.post("/api/works", form);
         const newWork = res.data;
 
@@ -67,7 +62,6 @@ const AdminForm = () => {
         setStatus("Book added successfully!");
       }
 
-      // Reset form
       setForm({
         title: "",
         img: "",
@@ -84,7 +78,6 @@ const AdminForm = () => {
     }
   };
 
-  // ✏️ Edit Work
   const handleEdit = (book: Work) => {
     setEditingId(book._id);
     setForm({
@@ -99,7 +92,6 @@ const AdminForm = () => {
     setStatus("");
   };
 
-  // 🗑 Delete Work
   const handleDelete = async (_id: string) => {
     if (!confirm("Are you sure you want to delete this work?")) return;
 
@@ -115,7 +107,7 @@ const AdminForm = () => {
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center py-10 px-4 gap-10">
-      {/* Logout Button */}
+      {/* Logout */}
       <button
         onClick={handleLogout}
         className="self-end bg-red-600 hover:bg-red-700 transition-colors px-4 py-2 rounded font-semibold md:mr-9"
@@ -146,7 +138,7 @@ const AdminForm = () => {
         <label>Book Cover Image URL</label>
         <input
           type="url"
-          placeholder="Book Cover Image URL (Cloudinary)"
+          placeholder="Book Cover Image URL"
           name="bookCoverImg"
           value={form.bookCoverImg}
           onChange={handleChange}
@@ -157,7 +149,7 @@ const AdminForm = () => {
         <label>Standing Book Image URL</label>
         <input
           type="url"
-          placeholder="Standing Book Image URL (Cloudinary)"
+          placeholder="Standing Book Image URL"
           name="img"
           value={form.img}
           onChange={handleChange}
@@ -189,7 +181,7 @@ const AdminForm = () => {
         <label>PDF Download Link</label>
         <input
           type="text"
-          placeholder="Download Link (Dropbox)"
+          placeholder="Download Link"
           name="downloadLink"
           value={form.downloadLink}
           onChange={handleChange}

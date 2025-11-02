@@ -7,7 +7,7 @@ import { Work } from "../types/work";
 export interface WorksContextType {
   works: Work[];
   refreshWorks: () => Promise<void>;
-  setWorks?: React.Dispatch<React.SetStateAction<Work[]>>; // 👈 optional setter
+  setWorks: React.Dispatch<React.SetStateAction<Work[]>>; // ✅ required
 }
 
 const WorksContext = createContext<WorksContextType | undefined>(undefined);
@@ -15,7 +15,6 @@ const WorksContext = createContext<WorksContextType | undefined>(undefined);
 export const WorksProvider = ({ children }: { children: React.ReactNode }) => {
   const [works, setWorks] = useState<Work[]>([]);
 
-  // Fetch works from API
   const refreshWorks = async () => {
     try {
       const res = await axios.get("/api/works");
