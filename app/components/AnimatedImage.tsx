@@ -1,13 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 
-const AnimatedImage = ({ src, alt, className }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: window.innerWidth < 768 ? "-100px" : "-300px" });
+interface AnimatedImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+}
 
+const AnimatedImage: React.FC<AnimatedImageProps> = ({ src, alt, className }) => {
+  const ref = useRef<HTMLImageElement | null>(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: window.innerWidth < 768 ? "-100px" : "-300px",
+  });
 
   return (
     <motion.img
