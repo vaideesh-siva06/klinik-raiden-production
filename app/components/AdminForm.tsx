@@ -79,7 +79,7 @@ const AdminForm = () => {
   };
 
   const handleEdit = (book: Work) => {
-    setEditingId(book._id);
+    setEditingId(book._id ?? null);
     setForm({
       title: book.title,
       img: book.img,
@@ -266,7 +266,7 @@ const AdminForm = () => {
                 <FaPencil />
               </button>
               <button
-                onClick={() => handleDelete(work._id)}
+                onClick={() => handleDelete(work._id!)}
                 className="py-1 px-3 bg-red-600 hover:bg-red-700 rounded text-sm"
               >
                 <FaTrash />

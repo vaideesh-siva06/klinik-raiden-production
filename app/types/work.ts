@@ -1,5 +1,5 @@
 export interface Work {
-  id?: string;
+  _id?: string;
   title: string;
   img: string;
   bookCoverImg: string,
