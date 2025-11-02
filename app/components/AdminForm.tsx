@@ -26,12 +26,16 @@ const AdminForm = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value, type, checked } = e.target;
+    const target = e.target as HTMLInputElement; // 🔹 assert as input
+
+    const { name, value, type, checked } = target;
+
     setForm((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+
 
   const handleLogout = () => {
     localStorage.removeItem("admin");
