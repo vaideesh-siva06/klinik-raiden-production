@@ -1,0 +1,19 @@
+.nav-item {
+  color: #F4F4F4;
+  text-decoration: none;
+  padding: 10px;
+  background-image: linear-gradient(to right, #ff3c3c, #ff3c3c);
+  background-size: 0% 2px;        /* start with 0 width */
+  background-position: center bottom; /* grow from center */
+  background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  background-size: 100% 2px;      /* full width on hover */
+}
+
+Link, button {
+    cursor: pointer;
+}
