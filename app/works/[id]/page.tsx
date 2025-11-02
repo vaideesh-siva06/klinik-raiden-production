@@ -10,12 +10,9 @@ import { useWorks } from "../../context/WorksContext";
 const WorkPage = () => {
   const { works } = useWorks();
   const params = useParams();
-  const work = works.find((w) => w._id.toString() === params.id);
+  const work = works.find((w) => w._id && w._id.toString() === params.id);
 
-  const example = works.find((w) => w._id.toString());
-
-  console.log(params);
-  console.log(example);
+  const example = works.find((w) => w._id && w._id.toString());
 
   if (!work) notFound();
 
