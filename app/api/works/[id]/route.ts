@@ -4,13 +4,11 @@ import Work from '../../../models/Work.js';
 import connectDB from "@/app/lib/mongoDB.js";
 
 
-export async function PUT(req: Request, context: { params: { id: string | Promise<string> } }) {
+export async function PUT(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
     await connectDB();
 
-    // Unwrap the id if it's a Promise
-    const { id } = await context.params;
-
+    const { id } = await context.params; // unwrap the promise
     const body = await req.json();
 
     const updatedWork = await Work.findByIdAndUpdate(
@@ -30,12 +28,11 @@ export async function PUT(req: Request, context: { params: { id: string | Promis
   }
 }
 
-export async function DELETE(req: Request, context: { params: { id: string } }) {
+export async function DELETE(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
     await connectDB();
 
-    // Next.js now requires `params` to be awaited
-    const { id } = await context.params; // ✅ unwrap the promise
+    const { id } = await context.params; // unwrap the promise
 
     const deletedWork = await Work.findByIdAndDelete(id);
 
