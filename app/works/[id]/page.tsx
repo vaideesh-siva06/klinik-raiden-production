@@ -63,7 +63,7 @@ const WorkPage = () => {
 
           <div className="flex flex-col md:flex-row gap-4 justify-start mt-8 text-center">
             <Link href={work.downloadLink} download>
-              <Button text="Download PDF" delayTime={0} />
+              <Button text="Download Free PDF" delayTime={0} />
             </Link>
           </div>
         </div>
