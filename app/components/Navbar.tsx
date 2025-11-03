@@ -22,7 +22,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-black text-white px-6 py-4 z-50 z-[9999]">
+    <nav className="fixed top-0 left-0 w-full bg-black text-white px-6 py-4 z-9999">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="text-4xl font-bold mt-2">
                 <Link href={'/'}>KLINIK RAIDEN</Link>

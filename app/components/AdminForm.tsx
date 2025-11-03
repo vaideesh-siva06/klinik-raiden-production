@@ -228,7 +228,7 @@ const AdminForm = () => {
         </div>
 
         {status && (
-          <p className="mt-2 text-center text-gray-300 break-words">{status}</p>
+          <p className="mt-2 text-center text-gray-300 wrap-break-word">{status}</p>
         )}
       </form>
 

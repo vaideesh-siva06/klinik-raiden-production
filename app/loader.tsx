@@ -38,7 +38,7 @@ const Loader: React.FC<{ onFinish?: () => void }> = ({ onFinish }) => {
   return (
     <div
       ref={containerRef}
-      className={`fixed inset-0 bg-black flex flex-col items-center justify-center z-[9999]`}
+      className={`fixed inset-0 bg-black flex flex-col items-center justify-center z-9999`}
       style={{
         opacity: fadingOut ? 0 : 1,
         transition: "opacity 0.6s ease-in-out",
