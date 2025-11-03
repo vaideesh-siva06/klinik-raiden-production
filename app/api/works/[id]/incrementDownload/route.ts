@@ -1,4 +1,4 @@
-export const runtime = "nodejs"; // required for MongoDB
+export const runtime = "edgejs"; // required for MongoDB
 
 import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoDB";
