@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import { motion } from "framer-motion";
-import { FaDownload } from "react-icons/fa";
 import Button from "../../components/Button";
 import { useWorks } from "../../context/WorksContext";
 
