@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import Work from '../../../models/Work.js';
 import connectDB from "@/app/lib/mongoDB.js";
 
+export const runtime = 'edge';
 
 export async function PUT(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
