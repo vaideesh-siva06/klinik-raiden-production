@@ -10,12 +10,16 @@ import { useWorks } from "../../context/WorksContext";
 const WorkPage = () => {
   const { works } = useWorks();
   const params = useParams();
-  const work = works.find((w) => w._id && w._id.toString() === params.id);
 
-  const example = works.find((w) => w._id && w._id.toString());
+  // Find the work by ID from context
+  const work = works.find((w) => w._id?.toString() === params.id);
 
-  if (!work) notFound();
+  // Call notFound only after works have loaded
+  useEffect(() => {
+    if (works.length && !work) notFound();
+  }, [works, work]);
 
+  // Set document title and scroll to top
   useEffect(() => {
     if (work?.title) {
       document.title = `Klinik Raiden | ${work.title}`;
@@ -23,10 +27,19 @@ const WorkPage = () => {
     window.scrollTo(0, 0);
   }, [work]);
 
+  // Show loading while works are being fetched
+  if (!works.length || !work) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white bg-black">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="relative min-h-screen bg-black text-white flex flex-col lg:flex-row items-stretch gap-8 lg:gap-16 max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-10 md:py-16 overflow-hidden">
 
-      {/* LEFT: TEXT (2nd on mobile) */}
+      {/* LEFT: TEXT */}
       <motion.div
         key={work._id + "-text"}
         className="relative w-full lg:w-1/2 flex flex-col justify-center order-2 gap-6"
@@ -43,20 +56,16 @@ const WorkPage = () => {
           <span className="text-sm md:text-base">Back</span>
         </Link>
 
-        {/* Text content */}
         <div className="lg:mt-16 space-y-4">
           {work.newRelease && (
             <p className="text-red-500 tracking-wide uppercase">NEW RELEASE</p>
           )}
-
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             {work.title}
           </h1>
-
           {work.quote && (
             <p className="italic text-lg md:text-xl text-gray-300">{work.quote}</p>
           )}
-
           <p className="text-base md:text-lg text-gray-300 leading-relaxed whitespace-pre-line">
             {work.description}
           </p>
@@ -69,8 +78,7 @@ const WorkPage = () => {
         </div>
       </motion.div>
 
-
-      {/* RIGHT: IMAGE (1st on mobile) */}
+      {/* RIGHT: IMAGE */}
       <motion.div
         key={work._id + "-img"}
         className="relative w-full lg:w-1/2 flex items-center justify-center order-1"
@@ -87,7 +95,6 @@ const WorkPage = () => {
           <span className="text-base">Back</span>
         </Link>
 
-        {/* Image wrapper */}
         <div className="relative flex items-center justify-center w-full h-full overflow-visible">
           <img
             src={work.img}
