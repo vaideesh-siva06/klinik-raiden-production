@@ -7,4 +7,5 @@ export interface Work {
   description?: string;
   downloadLink: string;
   newRelease?: boolean;
+  downloads?:number;
 }

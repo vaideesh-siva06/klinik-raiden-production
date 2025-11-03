@@ -3,11 +3,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Work } from "../types/work";
-import { FaPencil, FaTrash } from "react-icons/fa6";
+import { FaPencil, FaTrash, FaDownload } from "react-icons/fa6";
 import { useWorks } from "../context/WorksContext";
 
 const AdminForm = () => {
-  const { works, setWorks } = useWorks(); // ✅ setWorks is now always defined
+  const { works, setWorks } = useWorks();
 
   const [form, setForm] = useState<Omit<Work, "_id">>({
     title: "",
@@ -25,8 +25,7 @@ const AdminForm = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const target = e.target as HTMLInputElement; // assert type
-
+    const target = e.target as HTMLInputElement;
     const { name, value, type, checked } = target;
 
     setForm((prev) => ({
@@ -48,16 +47,13 @@ const AdminForm = () => {
       if (editingId) {
         const res = await axios.put(`/api/works/${editingId}`, form);
         const updatedWork = res.data;
-
         setWorks((prev) =>
           prev.map((w) => (w._id === editingId ? updatedWork : w))
         );
-
         setStatus("Book updated successfully!");
       } else {
         const res = await axios.post("/api/works", form);
         const newWork = res.data;
-
         setWorks((prev) => [...prev, newWork]);
         setStatus("Book added successfully!");
       }
@@ -255,6 +251,10 @@ const AdminForm = () => {
                 {work.newRelease && (
                   <span className="text-red-500 text-sm">NEW RELEASE</span>
                 )}
+                <div className="flex items-center gap-1 text-gray-400 text-sm mt-1">
+                  <FaDownload className="text-gray-300" />
+                  <span>{work.downloads || 0} downloads</span>
+                </div>
               </div>
             </div>
 

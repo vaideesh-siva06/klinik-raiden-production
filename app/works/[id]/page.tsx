@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import { motion } from "framer-motion";
+import { FaDownload } from "react-icons/fa";
 import Button from "../../components/Button";
 import { useWorks } from "../../context/WorksContext";
 
@@ -11,15 +12,12 @@ const WorkPage = () => {
   const { works } = useWorks();
   const params = useParams();
 
-  // Find the work by ID from context
   const work = works.find((w) => w._id?.toString() === params.id);
 
-  // Call notFound only after works have loaded
   useEffect(() => {
     if (works.length && !work) notFound();
   }, [works, work]);
 
-  // Set document title and scroll to top
   useEffect(() => {
     if (work?.title) {
       document.title = `Klinik Raiden | ${work.title}`;
@@ -27,7 +25,6 @@ const WorkPage = () => {
     window.scrollTo(0, 0);
   }, [work]);
 
-  // Show loading while works are being fetched
   if (!works.length || !work) {
     return (
       <div className="min-h-screen flex items-center justify-center text-white bg-black">
@@ -38,7 +35,7 @@ const WorkPage = () => {
 
   return (
     <div className="relative min-h-screen bg-black text-white flex flex-col lg:flex-row items-stretch gap-8 lg:gap-16 max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-10 md:py-16 overflow-hidden">
-
+      
       {/* LEFT: TEXT */}
       <motion.div
         key={work._id + "-text"}
@@ -70,6 +67,7 @@ const WorkPage = () => {
             {work.description}
           </p>
 
+          {/* Download Button */}
           <div className="flex flex-col md:flex-row gap-4 justify-start mt-8 text-center">
             <Link href={work.downloadLink} download>
               <Button text="Download Free PDF" delayTime={0} />
