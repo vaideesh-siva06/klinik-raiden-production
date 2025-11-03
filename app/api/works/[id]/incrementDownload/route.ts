@@ -1,4 +1,4 @@
-export const runtime = "experimental-edge"; // required for MongoDB
+export const runtime = "edge"; // required for MongoDB
 
 import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoDB";
