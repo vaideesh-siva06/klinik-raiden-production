@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoDB";
 import Work from "@/app/models/Work";
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 export async function PUT(
   req: Request,
