@@ -41,6 +41,9 @@ const workSchema = new Schema({
     type: String,
     required: true,
   },
+  downloads: {
+    type: Number
+  }
 }, {
   timestamps: true, // optional: adds createdAt and updatedAt
 });

@@ -1,4 +1,4 @@
-export const runtime = "nodejs";
+export const runtime = "nodejs"; // required for MongoDB
 
 import { NextResponse } from "next/server";
 import connectDB from "@/app/lib/mongoDB";
@@ -11,25 +11,28 @@ export async function PUT(
   try {
     await connectDB();
 
-    const { id } = await context.params; // unwrap the promise
+    const { id } = await context.params;
 
-    const work = await Work.findById(id);
+    // ✅ Use $inc to atomically increment
+    const work = await Work.findByIdAndUpdate(
+      id,
+      { $inc: { downloads: 1 } },
+      { new: true } // Return updated document
+    );
+
     if (!work) {
       return NextResponse.json({ message: "Work not found" }, { status: 404 });
     }
 
-    // Increment downloads
-    work.downloads = (work.downloads || 0) + 1;
-    await work.save();
-
-    return NextResponse.json(
-      { success: true, downloads: work.downloads },
-      { status: 200 }
-    );
+    return NextResponse.json({
+      success: true,
+      message: "Download count incremented successfully",
+      downloads: work.downloads,
+    });
   } catch (err) {
-    console.error(err);
+    console.error("Error incrementing downloads:", err);
     return NextResponse.json(
-      { message: "Error incrementing download count", err },
+      { message: "Error incrementing download count" },
       { status: 500 }
     );
   }

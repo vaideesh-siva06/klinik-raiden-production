@@ -1,8 +1,9 @@
 "use client";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 import React, { useEffect } from "react";
+import axios from "axios";
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import { motion } from "framer-motion";
@@ -68,9 +69,20 @@ const WorkPage = () => {
             {work.description}
           </p>
 
-          {/* Download Button */}
+          {/* ✅ Download Button */}
           <div className="flex flex-col md:flex-row gap-4 justify-start mt-8 text-center">
-            <Link href={work.downloadLink} download>
+            <Link
+              href={work.downloadLink}
+              download
+              onClick={async (e) => {
+                try {
+                  // increment download count
+                  await axios.put(`/api/works/${work._id}/incrementDownload`);
+                } catch (error) {
+                  console.error("Error incrementing download:", error);
+                }
+              }}
+            >
               <Button text="Download Free PDF" delayTime={0} />
             </Link>
           </div>
