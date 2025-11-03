@@ -1,9 +1,9 @@
+export const runtime = "edge";
+
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import Work from '../../../models/Work.js';
 import connectDB from "@/app/lib/mongoDB.js";
-
-export const runtime = 'nodejs';
 
 export async function PUT(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
