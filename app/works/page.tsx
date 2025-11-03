@@ -1,5 +1,7 @@
 "use client";
 
+export const runtime = 'edge';
+
 import React from "react";
 import AnimatedText from "../components/AnimatedComponent";
 import Link from "next/link";

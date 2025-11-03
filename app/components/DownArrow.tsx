@@ -1,5 +1,7 @@
 "use client";
 
+export const runtime = 'edge';
+
 import React, { useState, useEffect } from "react";
 import { BsArrowDown } from "react-icons/bs";
 import { motion } from "framer-motion";

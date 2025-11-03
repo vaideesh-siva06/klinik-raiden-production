@@ -1,5 +1,7 @@
 "use client";
 
+export const runtime = "edge";
+
 import React, { useState, useEffect } from "react";
 import AdminForm from "../components/AdminForm";
 import AdminLogin from "../components/AdminLogin";
