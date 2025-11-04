@@ -1,9 +1,20 @@
 import React from "react";
 import SubscribeForm from "../components/SubscribeForm";
+import Head from "next/head";
+
+export const runtime = "edge";
 
 const Subscribe = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black px-6 sm:px-12 lg:px-24">
+      <Head>
+        <title>Subscribe | Klinik Raiden</title>
+        <meta name="description" content="Subscribe to Klinik Raiden's newsletter to receive the latest updates, insights, and releases directly in your inbox." />
+        <meta name="keywords" content="Klinik Raiden, newsletter, subscribe, updates, insights" />
+        <meta name="robots" content="index,follow" />
+        <meta name="author" content="Klinik Raiden" />
+      </Head>
+
       <div className="w-full max-w-4xl bg-black rounded-3xl p-12 shadow-2xl text-center">
         {/* Page Header */}
         <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 drop-shadow-md">
@@ -21,4 +32,3 @@ const Subscribe = () => {
 };
 
 export default Subscribe;
-export const runtime = "edge";
