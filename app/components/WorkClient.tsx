@@ -1,9 +1,12 @@
+"use client";
+
 import React from "react";
 import { Work } from "../types/work";
 import Link from "next/link";
 import Button from "./Button";
 import AnimatedText from "./AnimatedComponent";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface WorksClientProps {
   works: Work[];
@@ -19,37 +22,49 @@ const WorksClient: React.FC<WorksClientProps> = ({ works }) => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-        {works.map((work) => (
-          <Link key={work._id} href={`/works/${work._id}`}>
-            <div className="relative flex flex-col bg-zinc-900 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
-              <div className="relative w-full flex justify-center items-center bg-black min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:min-h-[400px] overflow-hidden">
-                <Image
-                  src={work.bookCoverImg}
-                  width={1800}    // adjust based on the image's natural width
-                  height={2400}
-                  alt={work.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
+        {works.map((work, index) => (
+          <motion.div
+            key={work._id}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ 
+              duration: 0.4,
+              delay: index * 0.05,
+              ease: "easeOut"
+            }}
+          >
+            <Link href={`/works/${work._id}`}>
+              <div className="relative flex flex-col bg-zinc-900 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
+                <div className="relative w-full flex justify-center items-center bg-black min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:min-h-[400px] overflow-hidden">
+                  <Image
+                    src={work.bookCoverImg}
+                    width={1800}
+                    height={2400}
+                    alt={work.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
 
-              <div className="p-5 flex flex-col flex-1 justify-between">
-                {work.newRelease && (
-                  <p className="text-red-500 tracking-wide font-bold mb-6 mt-2">
-                    NEW RELEASE
-                  </p>
-                )}
-                <h2 className="text-xl md:text-2xl font-semibold mb-2">{work.title}</h2>
-                {work.quote && (
-                  <p className="text-gray-400 italic text-sm md:text-base line-clamp-2">
-                    {work.quote}
-                  </p>
-                )}
-                <div className="mt-4 text-center">
-                  <Button text="View Work" delayTime={0} />
+                <div className="p-5 flex flex-col flex-1 justify-between">
+                  {work.newRelease && (
+                    <p className="text-red-500 tracking-wide font-bold mb-6 mt-2">
+                      NEW RELEASE
+                    </p>
+                  )}
+                  <h2 className="text-xl md:text-2xl font-semibold mb-2">{work.title}</h2>
+                  {work.quote && (
+                    <p className="text-gray-400 italic text-sm md:text-base line-clamp-2">
+                      {work.quote}
+                    </p>
+                  )}
+                  <div className="mt-4 text-center">
+                    <Button text="View Work" delayTime={0} />
+                  </div>
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </div>

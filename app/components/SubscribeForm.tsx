@@ -1,10 +1,16 @@
 'use client'
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const SubscribeForm = () => {
   return (
-    <div className="w-full max-w-2xl mx-auto p-12 bg-zinc-800 bg-opacity-80 backdrop-blur-xl rounded-3xl shadow-2xl text-center border border-zinc-700 hover:border-zinc-600 transition-all duration-300">
+    <motion.div
+      className="w-full max-w-2xl mx-auto p-12 bg-zinc-800 bg-opacity-80 backdrop-blur-xl rounded-3xl shadow-2xl text-center border border-zinc-700 hover:border-zinc-600 transition-all duration-300"
+      initial={{ opacity: 0, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+    >
       <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 drop-shadow-md">
         Subscribe
       </h2>
@@ -66,7 +72,7 @@ const SubscribeForm = () => {
           klinikraiden@gmail.com
         </a>
       </p>
-    </div>
+    </motion.div>
   );
 };
 
