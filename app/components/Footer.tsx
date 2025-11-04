@@ -25,6 +25,9 @@ const Footer: React.FC = () => {
           <Link href="/works" className="hover:text-white transition-colors">
             Works
           </Link>
+          <Link href="/contact" className="hover:text-white transition-colors">
+            Contact
+          </Link>
         </div>
 
         {/* Social / Info */}

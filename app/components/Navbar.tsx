@@ -35,6 +35,7 @@ export default function Navbar() {
             <Link href="/" className="nav-item hover:text-gray-400">HOME</Link>
             <Link href="/works" className="nav-item hover:text-gray-400">WORKS</Link>
             <Link href="/about" className="nav-item hover:text-gray-400">ABOUT</Link>
+            <Link href="/contact" className="nav-item hover:text-gray-400">CONTACT</Link>
             </ul>
 
             {/* Hamburger Button */}
@@ -64,6 +65,7 @@ export default function Navbar() {
                 <Link href="/" className="nav-item hover:text-gray-400 hover:cursor-pointer">HOME</Link>
                 <Link href="/works" className="nav-item hover:text-gray-400 hover:cursor-pointer">WORKS</Link>
                 <Link href="/about" className="nav-item hover:text-gray-400 hover:cursor-pointer">ABOUT</Link>
+                <Link href="/contact" className="nav-item hover:text-gray-400">CONTACT</Link>
             </ul>
         </div>
 
