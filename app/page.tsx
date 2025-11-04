@@ -19,14 +19,35 @@ const Home = () => {
     </p>,
   ];
 
+  const canonicalUrl = "https://klinokraiden.com/";
+
   return (
     <div>
       <Head>
         <title>Klinik Raiden | Home</title>
-        <meta name="description" content="Explore Klinik Raiden — a collection of free-to-read works and writings meant to inspire and provide solace." />
-        <meta name="keywords" content="writing, free works, literature, inspiration, solace" />
+        <meta
+          name="description"
+          content="Explore Klinik Raiden — a collection of free-to-read works and writings meant to inspire and provide solace."
+        />
+        <meta
+          name="keywords"
+          content="Klinik Raiden, writing, free works, literature, inspiration, solace"
+        />
         <meta name="robots" content="index,follow" />
         <meta name="author" content="Klinik Raiden" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph / Social Sharing */}
+        <meta property="og:title" content="Klinik Raiden | Home" />
+        <meta
+          property="og:description"
+          content="Explore Klinik Raiden — a collection of free-to-read works and writings meant to inspire and provide solace."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Klinik Raiden" />
       </Head>
 
       {/* Full-screen header */}

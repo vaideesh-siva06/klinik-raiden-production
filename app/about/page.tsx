@@ -46,10 +46,29 @@ const About = () => {
     <div className="px-6 py-12 sm:px-12 lg:px-24 cursor-auto">
       <Head>
         <title>About Klinik Raiden | Philosophy & Writing</title>
-        <meta name="description" content="Learn about Klinik Raiden — a scientific philosopher combining science and philosophy through thoughtful writings." />
-        <meta name="keywords" content="Klinik Raiden, philosophy, science, writings, author, scientific philosopher" />
+        <meta
+          name="description"
+          content="Learn about Klinik Raiden — a scientific philosopher combining science and philosophy through thoughtful writings."
+        />
+        <meta
+          name="keywords"
+          content="Klinik Raiden, philosophy, science, writings, author, scientific philosopher"
+        />
         <meta name="robots" content="index,follow" />
         <meta name="author" content="Klinik Raiden" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://klinikraiden.com/about" />
+
+        {/* Open Graph / Social Sharing */}
+        <meta property="og:title" content="About Klinik Raiden | Philosophy & Writing" />
+        <meta
+          property="og:description"
+          content="Learn about Klinik Raiden — a scientific philosopher combining science and philosophy through thoughtful writings."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://klinikraiden.com/about" />
+        <meta property="og:site_name" content="Klinik Raiden" />
       </Head>
 
       <div className="flex flex-col items-start justify-center mx-auto w-full max-w-4xl">

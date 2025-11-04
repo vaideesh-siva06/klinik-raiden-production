@@ -33,6 +33,8 @@ const WorkPage = () => {
     );
   }
 
+  const canonicalUrl = `https://klinikraiden.com/works/${work._id}`;
+
   return (
     <>
       {/* Head for SEO */}
@@ -48,6 +50,20 @@ const WorkPage = () => {
         />
         <meta name="robots" content="index,follow" />
         <meta name="author" content="Klinik Raiden" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph / Social Sharing */}
+        <meta property="og:title" content={`Klinik Raiden | ${work.title}`} />
+        <meta
+          property="og:description"
+          content={work.description || "Explore this free work by Klinik Raiden."}
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Klinik Raiden" />
+        {work.img && <meta property="og:image" content={work.img} />}
       </Head>
 
       <div className="relative min-h-screen bg-black text-white flex flex-col lg:flex-row items-stretch gap-8 lg:gap-16 max-w-7xl mx-auto px-5 sm:px-6 md:px-10 py-10 md:py-16 overflow-hidden">

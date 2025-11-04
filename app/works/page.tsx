@@ -6,6 +6,8 @@ import Head from "next/head";
 export const runtime = "edge";
 
 const WorksPage = () => {
+  const canonicalUrl = "https://klinokraiden.com/works";
+
   return (
     <>
       <Head>
@@ -20,6 +22,19 @@ const WorksPage = () => {
         />
         <meta name="robots" content="index,follow" />
         <meta name="author" content="Klinik Raiden" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph / Social Sharing */}
+        <meta property="og:title" content="All Works | Klinik Raiden" />
+        <meta
+          property="og:description"
+          content="Explore all works by Klinik Raiden — free-to-read writings, insights, and thought-provoking pieces."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Klinik Raiden" />
       </Head>
 
       <WorksClient works={worksData} />
