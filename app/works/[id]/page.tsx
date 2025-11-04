@@ -140,9 +140,11 @@ const WorkPage = () => {
               src={work.img}
               alt={work.title}
               fill
-              className="object-contain transition-transform duration-700 ease-out scale-110 lg:scale-200 -translate-x-6 lg:-translate-x-10"
+              priority
+              className="object-contain transition-transform duration-700 ease-out scale-140 -translate-x-6 lg:-translate-x-10"
             />
           </div>
+
 
         </motion.div>
       </div>
