@@ -1,5 +1,3 @@
-'use client';
-
 export const runtime = 'nodejs';
 
 import React from 'react'
@@ -8,6 +6,7 @@ import Button from './components/Button'
 import WorksSection from './components/WorksSection'
 import Link from 'next/link'
 import DownArrow from './components/DownArrow'
+import ScrollButton from './components/ScrollButton';
 
 const Home = () => {
 
@@ -22,41 +21,6 @@ const Home = () => {
       </p>,
     ];
 
-  
-   const handleScroll = () => {
-    const scrollToElement = (targetY: number, duration = 1000) => {
-      const startY = window.scrollY;
-      const distance = targetY - startY;
-      const startTime = performance.now();
-
-      const animateScroll = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easeInOut = 0.5 * (1 - Math.cos(Math.PI * progress));
-
-        window.scrollTo(0, startY + distance * easeInOut);
-
-        if (progress < 1) requestAnimationFrame(animateScroll);
-      };
-
-      requestAnimationFrame(animateScroll);
-    };
-
-    const section = document.querySelector(".books-section");
-    if (section) {
-      const rect = section.getBoundingClientRect();
-
-      // ✅ Adjust scroll offset based on screen size
-      const isMobile = window.innerWidth < 768;
-      const offset = isMobile
-        ? window.innerHeight * 0.001 // scrolls a bit more on mobile
-        : window.innerHeight * 0.15; // default for larger screens
-
-      const targetY = rect.top + window.scrollY - offset;
-      scrollToElement(targetY, 1000);
-    }
-  };
-
   return (
     <div>
       {/* Full-screen header */}
@@ -65,9 +29,7 @@ const Home = () => {
           <AnimatedComponent phrases={phrases} delay={0} />
 
           <span className="flex flex-col items-center mt-9 gap-9">
-            <div onClick={handleScroll}>
-              <Button text="View Works" delayTime={2} />
-            </div>
+            <ScrollButton />
 
             {/* Reserve space for the arrow */}
             <div className="h-12 relative w-full flex justify-center">
