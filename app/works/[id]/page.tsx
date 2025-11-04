@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import Button from "../../components/Button";
 import { useWorks } from "../../context/WorksContext";
 import Head from "next/head";
+import Image from "next/image";
 
 const WorkPage = () => {
   const { works } = useWorks();
@@ -78,7 +79,7 @@ const WorkPage = () => {
           {/* Desktop Back button */}
           <Link
             href="/works"
-            className="hidden lg:flex absolute top-6 left-0 md:top-20 items-center gap-2 text-gray-400 hover:text-white transition-colors duration-200 z-50"
+            className="hidden lg:flex absolute top-6 left-0 lg:top-40 items-center gap-2 text-gray-400 hover:text-white transition-colors duration-200 z-50"
           >
             <span className="text-lg">←</span>
             <span className="text-sm md:text-base">Back</span>
@@ -134,13 +135,15 @@ const WorkPage = () => {
             <span className="text-base">Back</span>
           </Link>
 
-          <div className="relative flex items-center justify-center w-full h-full overflow-visible">
-            <img
+          <div className="relative w-full h-[600px] sm:h-[800px] lg:h-[1200px] overflow-visible">
+            <Image
               src={work.img}
               alt={work.title}
-              className="relative w-[160%] ml-15 md:ml-0 md:w-[150%] max-w-none h-auto object-contain transition-transform duration-700 ease-out hover:scale-110 -translate-x-6 lg:-translate-x-10"
+              fill
+              className="object-contain transition-transform duration-700 ease-out scale-110 lg:scale-200 -translate-x-6 lg:-translate-x-10"
             />
           </div>
+
         </motion.div>
       </div>
     </>

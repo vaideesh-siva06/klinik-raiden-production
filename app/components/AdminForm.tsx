@@ -7,6 +7,7 @@ import axios from "axios";
 import { Work } from "../types/work";
 import { FaPencil, FaTrash, FaDownload } from "react-icons/fa6";
 import { useWorks } from "../context/WorksContext";
+import Image from "next/image";
 
 const AdminForm = () => {
   const { works, setWorks } = useWorks();
@@ -243,10 +244,14 @@ const AdminForm = () => {
             className="flex flex-col md:flex-row items-center justify-between gap-4 bg-gray-800 p-4 rounded"
           >
             <div className="flex items-center gap-4">
-              <img
+             <Image
                 src={work.bookCoverImg}
                 alt={work.title}
-                className="w-16 h-20 object-cover rounded"
+                width={64}      // 16 * 4px = 64px
+                height={80}     // 20 * 4px = 80px
+                className="rounded object-cover"
+                priority={false} // set to true if this is above-the-fold / important
+                quality={80}     // optional, compresses the image
               />
               <div>
                 <p className="font-semibold">{work.title}</p>

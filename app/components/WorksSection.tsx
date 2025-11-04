@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Button from "../components/Button";
 import { useWorks } from "../context/WorksContext";
+import Image from "next/image";
 
 const WorksSection = () => {
   const { works } = useWorks(); // ✅ Get works from context
@@ -59,9 +60,11 @@ const WorksSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="relative flex items-center justify-center rounded-2xl p-6 w-full h-full overflow-visible">
-              <img
+              <Image
                 src={work.img}
                 alt={work.title}
+                width={1800}    // adjust based on the image's natural width
+                height={2400}
                 className="relative w-[200%] ml-24 md:ml-36 md:w-full lg:w-[150%] max-w-none h-auto object-contain object-center transition-transform duration-700 ease-out hover:scale-110 -translate-x-6 lg:-translate-x-10"
               />
             </div>

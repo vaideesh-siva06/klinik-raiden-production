@@ -3,6 +3,7 @@ import { Work } from "../types/work";
 import Link from "next/link";
 import Button from "./Button";
 import AnimatedText from "./AnimatedComponent";
+import Image from "next/image";
 
 interface WorksClientProps {
   works: Work[];
@@ -22,8 +23,10 @@ const WorksClient: React.FC<WorksClientProps> = ({ works }) => {
           <Link key={work._id} href={`/works/${work._id}`}>
             <div className="relative flex flex-col bg-zinc-900 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer">
               <div className="relative w-full flex justify-center items-center bg-black min-h-[250px] sm:min-h-[300px] md:min-h-[350px] lg:min-h-[400px] overflow-hidden">
-                <img
+                <Image
                   src={work.bookCoverImg}
+                  width={1800}    // adjust based on the image's natural width
+                  height={2400}
                   alt={work.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
