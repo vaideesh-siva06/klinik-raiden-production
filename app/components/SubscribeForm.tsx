@@ -19,7 +19,7 @@ const SubscribeForm = () => {
       </p>
 
       <form
-        action="https://klinikraiden.us5.list-manage.com/subscribe/post?u=358cadac4e2cbc21d4f558247&amp;id=cd82778554&amp;f_id=009ff1e0f0"
+        action="https://klinikraiden.us15.list-manage.com/subscribe/post?u=454799834f13160452aeb4604&amp;id=81a09270f0&amp;f_id=00e6c2e1f0"
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"
@@ -46,7 +46,7 @@ const SubscribeForm = () => {
         <div aria-hidden="true" style={{ position: 'absolute', left: '-5000px' }}>
           <input
             type="text"
-            name="b_358cadac4e2cbc21d4f558247_cd82778554"
+            name="b_454799834f13160452aeb4604_81a09270f0"
             tabIndex={-1}
             defaultValue=""
             readOnly
