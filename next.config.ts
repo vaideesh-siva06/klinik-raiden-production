@@ -1,21 +1,23 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
         port: '',
-        pathname: '/**', // allow all paths from Cloudinary
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'miro.medium.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
-
-  env: {
-    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
-    MONGO_URI: process.env.MONGO_URI,
-  },
 };
+
 
 export default nextConfig;
