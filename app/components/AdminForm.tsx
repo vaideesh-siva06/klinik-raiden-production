@@ -244,15 +244,14 @@ const AdminForm = () => {
             className="flex flex-col md:flex-row items-center justify-between gap-4 bg-gray-800 p-4 rounded"
           >
             <div className="flex items-center gap-4">
-             <Image
-                src={work.bookCoverImg}
-                alt={work.title}
-                width={64}      // 16 * 4px = 64px
-                height={80}     // 20 * 4px = 80px
-                className="rounded object-cover"
-                priority={false} // set to true if this is above-the-fold / important
-                quality={80}     // optional, compresses the image
-              />
+             {work.bookCoverImg && (
+                <Image
+                  src={work.bookCoverImg}
+                  alt={work.title}
+                  width={64}
+                  height={80}
+                />
+              )}
               <div>
                 <p className="font-semibold">{work.title}</p>
                 {work.newRelease && (

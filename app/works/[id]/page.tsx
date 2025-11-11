@@ -136,13 +136,14 @@ const WorkPage = () => {
           </Link>
 
           <div className="relative w-full h-[600px] sm:h-[800px] lg:h-[1200px] overflow-visible">
-            <Image
-              src={work.img}
-              alt={work.title}
-              fill
-              priority
-              className="object-contain transition-transform duration-700 ease-out scale-140 -translate-x-6 lg:-translate-x-10"
-            />
+            {work.bookCoverImg && (
+              <Image
+                src={work.bookCoverImg}
+                alt={work.title}
+                width={64}
+                height={80}
+              />
+            )}
           </div>
 
 
