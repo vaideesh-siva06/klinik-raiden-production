@@ -57,22 +57,26 @@ const WorksPage = () => {
         </h1>
 
         {/* Tabs */}
-        <div className="flex justify-center space-x-6 border-b border-gray-200 mb-1">
-          {tabs.map((tab) => (
-            <button
-              key={tab.name}
-              className={`py-2 px-6 font-semibold text-lg rounded-t-md transition-colors duration-200 flex items-center ${
-                activeTab === tab.name
-                  ? "bg-red-900 text-white border-b-4 border-red-900"
-                  : "bg-white text-black hover:bg-red-900 hover:text-white"
-              }`}
-              onClick={() => setActiveTab(tab.name)}
-            >
-              {tab.icon}
-              {tab.name}
-            </button>
-          ))}
+        <div className="overflow-x-auto">
+          <div className="inline-flex justify-center space-x-4 sm:space-x-6 border-b border-gray-200 mb-4 px-2 sm:px-0 w-full">
+            {tabs.map((tab) => (
+              <button
+                key={tab.name}
+                className={`flex items-center whitespace-nowrap py-2 px-4 sm:px-6 text-sm sm:text-lg font-semibold rounded-t-md transition-colors duration-200 ${
+                  activeTab === tab.name
+                    ? "bg-red-900 text-white border-b-4 border-red-900"
+                    : "bg-white text-black hover:bg-red-900 hover:text-white"
+                }`}
+                onClick={() => setActiveTab(tab.name)}
+              >
+                {tab.icon}
+                {tab.name}
+              </button>
+            ))}
+          </div>
         </div>
+
+
 
         {/* Works Content */}
         <div className="min-h-[200px]">
