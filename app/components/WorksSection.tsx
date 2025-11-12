@@ -59,16 +59,18 @@ const WorksSection = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative flex items-center justify-center rounded-2xl p-6 w-full h-full overflow-visible">
-              {work.bookCoverImg && (
+            <div className="relative flex items-center justify-center rounded-2xl p-6 w-full h-[300px] sm:h-[400px] lg:h-[500px] overflow-visible scale-150">
+              {work.img && (
                 <Image
-                  src={work.bookCoverImg}
+                  src={work.img}
                   alt={work.title}
-                  width={64}
-                  height={80}
+                  fill
+                  className="object-contain rounded-xl"
                 />
               )}
             </div>
+
+
           </motion.div>
 
           {/* Text Section */}

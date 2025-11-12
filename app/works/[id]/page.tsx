@@ -135,16 +135,17 @@ const WorkPage = () => {
             <span className="text-base">Back</span>
           </Link>
 
-          <div className="relative w-full h-[600px] sm:h-[800px] lg:h-[1200px] overflow-visible">
-            {work.bookCoverImg && (
-              <Image
-                src={work.bookCoverImg}
-                alt={work.title}
-                width={64}
-                height={80}
-              />
-            )}
-          </div>
+         <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] overflow-visible scale-150">
+          {work.img && (
+            <Image
+              src={work.img}
+              alt={work.title}
+              fill
+              className="object-contain rounded-xl"
+            />
+          )}
+        </div>
+
 
 
         </motion.div>
